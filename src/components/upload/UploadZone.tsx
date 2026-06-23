@@ -22,13 +22,13 @@ export default function UploadZone({
         type="file"
         accept="image/*"
         onChange={handleChange}
-        className="hidden"
+        style={{ display: "none" }}
       />
 
       <div className="rounded-3xl border border-border bg-surface p-16 transition hover:border-white/40">
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="mb-4 text-6xl">
-            🖼️
+          <div className="mb-4 text-5xl">
+            ↑
           </div>
 
           <h3 className="text-xl font-semibold">

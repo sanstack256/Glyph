@@ -5,10 +5,13 @@ import { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import UploadZone from "@/components/upload/UploadZone";
 import PreviewPanel from "@/components/preview/PreviewPanel";
+import ControlPanel from "@/components/controls/ControlPanel";
 
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null);
+  const [ascii, setAscii] =
+    useState("");
 
   return (
     <main className="min-h-screen bg-background">
@@ -38,9 +41,16 @@ export default function Home() {
             setImage={setImage}
           />
 
+          <ControlPanel
+            image={image}
+            setAscii={setAscii}
+          />
+
           <PreviewPanel
             image={image}
+            ascii={ascii}
           />
+
         </div>
       </section>
     </main>

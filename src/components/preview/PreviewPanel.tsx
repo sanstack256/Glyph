@@ -1,35 +1,53 @@
 interface PreviewPanelProps {
   image: File | null;
+  ascii: string;
 }
 
 export default function PreviewPanel({
   image,
+  ascii,
+
+
 }: PreviewPanelProps) {
-  if (!image) {
-    return (
-      <div className="rounded-3xl border border-border bg-surface p-12">
-        <div className="text-center">
-          <h3 className="text-xl font-semibold">
-            Preview
-          </h3>
-
-          <p className="mt-2 text-muted">
-            Upload an image to begin
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  const imageUrl = URL.createObjectURL(image);
+  const imageUrl = image
+    ? URL.createObjectURL(image)
+    : null;
 
   return (
-    <div className="rounded-3xl border border-border bg-surface p-6">
-      <img
-        src={imageUrl}
-        alt="preview"
-        className="mx-auto max-h-[500px] rounded-xl"
-      />
+    <div className="grid gap-6 md:grid-cols-2">
+      <div className="rounded-3xl border border-border bg-surface p-6">
+        <h3 className="mb-4 text-lg font-semibold">
+          Original
+        </h3>
+
+        {!image ? (
+          <div className="flex h-[300px] items-center justify-center text-muted">
+            Upload an image to begin
+          </div>
+        ) : (
+          <img
+            src={imageUrl!}
+            alt="Original"
+            className="mx-auto max-h-[500px] rounded-xl"
+          />
+        )}
+      </div>
+
+      <div className="rounded-3xl border border-border bg-surface p-6">
+        <h3 className="mb-4 text-lg font-semibold">
+          Result
+        </h3>
+
+        {!ascii ? (
+          <div className="flex h-[300px] items-center justify-center text-muted">
+            Generate artwork to see the result
+          </div>
+        ) : (
+          <pre className="h-[500px] overflow-auto whitespace-pre text-[4px] leading-[0.8] font-mono">
+            {ascii}
+          </pre>
+        )}
+      </div>
     </div>
   );
 }
