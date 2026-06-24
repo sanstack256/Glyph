@@ -4,7 +4,7 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <div className="flex items-center gap-3">
           <img
-            src="/logo.png"
+            src="/logo2.png"
             alt="Glyph"
             className="h-10 w-auto"
           />

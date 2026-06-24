@@ -36,21 +36,6 @@ export default function PreviewPanel({
     items-center
     justify-center
   "
-          onMouseDown={() =>
-            setShowOriginal(true)
-          }
-          onMouseUp={() =>
-            setShowOriginal(false)
-          }
-          onMouseLeave={() =>
-            setShowOriginal(false)
-          }
-          onTouchStart={() =>
-            setShowOriginal(true)
-          }
-          onTouchEnd={() =>
-            setShowOriginal(false)
-          }
         >
           <img
             src={displayedImage || ""}
