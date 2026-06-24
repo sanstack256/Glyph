@@ -54,6 +54,7 @@ export default function Home() {
             setAsciiImage={setAsciiImage}
             asciiWidth={asciiWidth}
             setAsciiWidth={setAsciiWidth}
+            asciiImage={asciiImage}
           />
 
           <PreviewPanel

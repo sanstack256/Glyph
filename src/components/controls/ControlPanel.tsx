@@ -9,6 +9,7 @@ import { asciiToPng }
 
 interface Props {
   image: File | null;
+  asciiImage: string | null;
 
   setAscii: (
     value: AsciiPixel[][]
@@ -31,6 +32,7 @@ export default function ControlPanel({
   setAsciiImage,
   asciiWidth,
   setAsciiWidth,
+  asciiImage,
 }: Props) {
   async function handleGenerate() {
     if (!image) return;
@@ -81,6 +83,29 @@ export default function ControlPanel({
       >
         Generate ASCII
       </button>
+
+      {asciiImage && (
+        <a
+          href={asciiImage}
+          download="glyph-ascii.png"
+          className="
+      mt-3
+      block
+      w-full
+      rounded-xl
+      border
+      border-white/20
+      px-4
+      py-3
+      text-center
+      font-medium
+      transition
+      hover:bg-white/10
+    "
+        >
+          Download PNG
+        </a>
+      )}
 
     </div>
   );
