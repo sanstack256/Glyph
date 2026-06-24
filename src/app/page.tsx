@@ -58,7 +58,6 @@ export default function Home() {
 
           <PreviewPanel
             image={image}
-            ascii={ascii}
             asciiImage={asciiImage}
           />
 
