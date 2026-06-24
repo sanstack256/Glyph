@@ -17,6 +17,9 @@ export default function Home() {
   const [asciiImage, setAsciiImage] =
     useState<string | null>(null);
 
+  const [asciiWidth, setAsciiWidth] =
+    useState(200);
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -49,6 +52,8 @@ export default function Home() {
             image={image}
             setAscii={setAscii}
             setAsciiImage={setAsciiImage}
+            asciiWidth={asciiWidth}
+            setAsciiWidth={setAsciiWidth}
           />
 
           <PreviewPanel

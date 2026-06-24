@@ -17,12 +17,20 @@ interface Props {
   setAsciiImage: (
     value: string | null
   ) => void;
+
+  asciiWidth: number;
+
+  setAsciiWidth: (
+    value: number
+  ) => void;
 }
 
 export default function ControlPanel({
   image,
   setAscii,
   setAsciiImage,
+  asciiWidth,
+  setAsciiWidth,
 }: Props) {
   async function handleGenerate() {
     if (!image) return;
@@ -41,6 +49,10 @@ export default function ControlPanel({
 
   return (
     <div>
+
+
+
+      
       <button
         onClick={
           handleGenerate

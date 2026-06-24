@@ -1,5 +1,5 @@
 const ASCII_CHARS =
-  " .,:;irsXA253hMHGS#9B&@";
+" .'`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 
 export interface AsciiPixel {
     char: string;
@@ -37,12 +37,11 @@ export async function imageToAscii(
 
 if (!ctx) return [];
 
-    const width = 250;
+    const width = 200;
 
    const height = Math.floor(
   (img.height / img.width) *
-  width *
-  0.40
+  width 
 );
     canvas.width = width;
     canvas.height = height;

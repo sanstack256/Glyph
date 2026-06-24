@@ -3,7 +3,7 @@ import type { AsciiPixel } from "@/types";
 export function asciiToPng(
   ascii: AsciiPixel[][]
 ) {
-  const fontSize = 4;
+  const fontSize = 8;
 
   const canvas =
     document.createElement("canvas");
