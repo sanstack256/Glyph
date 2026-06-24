@@ -1,5 +1,10 @@
 const ASCII_CHARS =
-"@%#*+=-:. ";
+  " .,:;irsXA253hMHGS#9B&@";
+
+export interface AsciiPixel {
+    char: string;
+    brightness: number;
+}
 
 export function brightnessToChar(
     brightness: number
@@ -30,15 +35,15 @@ export async function imageToAscii(
     const ctx =
         canvas.getContext("2d");
 
-    if (!ctx) return "";
+if (!ctx) return [];
 
-    const width = 120;
+    const width = 250;
 
-    const height = Math.floor(
-        (img.height / img.width) *
-        width *
-        0.55
-    );
+   const height = Math.floor(
+  (img.height / img.width) *
+  width *
+  0.40
+);
     canvas.width = width;
     canvas.height = height;
 
@@ -57,41 +62,39 @@ export async function imageToAscii(
         height
     );
 
-    let ascii = "";
+    const ascii: AsciiPixel[][] = [];
 
-    for (
-        let y = 0;
-        y < height;
-        y++
-    ) {
-        for (
-            let x = 0;
-            x < width;
-            x++
-        ) {
-            const offset =
-                (y * width + x) * 4;
+    for (let y = 0; y < height; y++) {
+        const row: AsciiPixel[] = []; 
+            for (
+                let x = 0;
+                x < width;
+                x++
+            ) {
+                const offset =
+                    (y * width + x) * 4;
 
-            const r =
-                data.data[offset];
+                const r =
+                    data.data[offset];
 
-            const g =
-                data.data[offset + 1];
+                const g =
+                    data.data[offset + 1];
 
-            const b =
-                data.data[offset + 2];
+                const b =
+                    data.data[offset + 2];
 
-            const brightness =
-                (r + g + b) / 3;
+                const brightness =
+                    (r + g + b) / 3;
 
-            ascii +=
-                brightnessToChar(
-                    brightness
-                );
+                row.push({
+                    char: brightnessToChar(brightness),
+                    brightness,
+                });
+            }
+
+            ascii.push(row);
         }
-
-        ascii += "\n";
-    }
-
-    return ascii;
+        
+   
+        return ascii;
 }

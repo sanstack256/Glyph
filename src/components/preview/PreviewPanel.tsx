@@ -1,13 +1,15 @@
+import type { AsciiPixel } from "@/types";
+
 interface PreviewPanelProps {
   image: File | null;
-  ascii: string;
+  ascii: AsciiPixel[][];
+  asciiImage: string | null;
 }
 
 export default function PreviewPanel({
   image,
   ascii,
-
-
+  asciiImage,
 }: PreviewPanelProps) {
   const imageUrl = image
     ? URL.createObjectURL(image)
@@ -43,9 +45,15 @@ export default function PreviewPanel({
             Generate artwork to see the result
           </div>
         ) : (
-          <pre className="h-[500px] overflow-auto whitespace-pre text-[4px] leading-[0.8] font-mono">
-            {ascii}
-          </pre>
+          <div className="flex h-[500px] items-center justify-center bg-black">
+            {asciiImage && (
+              <img
+                src={asciiImage}
+                alt="ASCII Result"
+                className="max-h-full max-w-full"
+              />
+            )}
+          </div>
         )}
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { AsciiPixel } from "@/types";
 
 import Navbar from "@/components/layout/Navbar";
 import UploadZone from "@/components/upload/UploadZone";
@@ -11,19 +12,22 @@ import ControlPanel from "@/components/controls/ControlPanel";
 export default function Home() {
   const [image, setImage] = useState<File | null>(null);
   const [ascii, setAscii] =
-    useState("");
+    useState<AsciiPixel[][]>([]);
+
+  const [asciiImage, setAsciiImage] =
+    useState<string | null>(null);
 
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section className="mx-auto max-w-6xl px-6 py-12">
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted">
             Character Art Generator
           </div>
 
-          <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
+          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
             Turn Photos Into
             <br />
             Characters & Dots
@@ -44,11 +48,13 @@ export default function Home() {
           <ControlPanel
             image={image}
             setAscii={setAscii}
+            setAsciiImage={setAsciiImage}
           />
 
           <PreviewPanel
             image={image}
             ascii={ascii}
+            asciiImage={asciiImage}
           />
 
         </div>

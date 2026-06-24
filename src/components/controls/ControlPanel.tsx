@@ -1,18 +1,28 @@
 "use client";
 
 import { imageToAscii }
-from "@/lib/generators/ascii";
+  from "@/lib/generators/ascii";
+
+import type { AsciiPixel } from "@/types";
+import { asciiToPng }
+  from "@/lib/export/png";
 
 interface Props {
   image: File | null;
+
   setAscii: (
-    value: string
+    value: AsciiPixel[][]
+  ) => void;
+
+  setAsciiImage: (
+    value: string | null
   ) => void;
 }
 
 export default function ControlPanel({
   image,
   setAscii,
+  setAsciiImage,
 }: Props) {
   async function handleGenerate() {
     if (!image) return;
@@ -22,8 +32,11 @@ export default function ControlPanel({
 
     const result =
       await imageToAscii(url);
+    const png =
+      asciiToPng(result);
 
     setAscii(result);
+    setAsciiImage(png);
   }
 
   return (
