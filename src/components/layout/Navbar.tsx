@@ -9,10 +9,6 @@ export default function Navbar() {
             className="h-10 w-auto"
           />
 
-          <span>
-            Glyph
-          </span>
-
         </div>
 
         <button className="rounded-lg border border-border px-4 py-2 text-sm transition hover:bg-surface-hover">
