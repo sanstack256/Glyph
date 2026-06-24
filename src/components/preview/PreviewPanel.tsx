@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 
+
 interface PreviewPanelProps {
   image: File | null;
   asciiImage: string | null;
@@ -28,7 +29,13 @@ export default function PreviewPanel({
 
       {asciiImage ? (
         <div
-          className="flex flex-col items-center"
+          className="
+    flex
+    h-full
+    flex-col
+    items-center
+    justify-center
+  "
           onMouseDown={() =>
             setShowOriginal(true)
           }
@@ -48,7 +55,11 @@ export default function PreviewPanel({
           <img
             src={displayedImage || ""}
             alt="Preview"
-            className="max-h-full max-w-full"
+            className="
+    max-h-[420px]
+    max-w-full
+    object-contain
+  "
           />
 
           <button
