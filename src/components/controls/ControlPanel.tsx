@@ -39,7 +39,11 @@ export default function ControlPanel({
       URL.createObjectURL(image);
 
     const result =
-      await imageToAscii(url);
+      await imageToAscii(
+        url,
+        asciiWidth
+      );
+
     const png =
       asciiToPng(result);
 
@@ -50,17 +54,34 @@ export default function ControlPanel({
   return (
     <div>
 
+      <div className="mb-6">
+        <div className="mb-2 flex justify-between">
+          <span>Detail</span>
+          <span>{asciiWidth}</span>
+        </div>
 
+        <input
+          type="range"
+          min="100"
+          max="500"
+          step="10"
+          value={asciiWidth}
+          onChange={(e) =>
+            setAsciiWidth(
+              Number(e.target.value)
+            )
+          }
+          className="w-full"
+        />
+      </div>
 
-      
       <button
-        onClick={
-          handleGenerate
-        }
+        onClick={handleGenerate}
         className="w-full rounded-xl bg-white px-4 py-3 font-medium text-black"
       >
         Generate ASCII
       </button>
+
     </div>
   );
 }
