@@ -1,11 +1,8 @@
 "use client";
 
-import { imageToAscii }
-  from "@/lib/generators/ascii";
-import { useState, useEffect } from "react";
 import type { AsciiPixel } from "@/types";
-import { asciiToPng }
-  from "@/lib/export/png";
+import { useEffect } from "react";
+
 
 interface Props {
   image: File | null;
@@ -27,6 +24,8 @@ interface Props {
   ) => void;
 }
 
+
+
 export default function ControlPanel({
   image,
   setAscii,
@@ -37,46 +36,15 @@ export default function ControlPanel({
   generateAscii,
 }: Props) {
 
-  const [hasGenerated, setHasGenerated] =
-    useState(false);
-
   useEffect(() => {
-    setHasGenerated(false);
-  }, [image]);
+  if (!asciiImage) return;
 
-  useEffect(() => {
-    if (!image || !hasGenerated) return;
+  const timer = setTimeout(() => {
+    generateAscii();
+  }, 300);
 
-    const timer = setTimeout(() => {
-      handleGenerate();
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [asciiWidth]);
-
-
-  async function handleGenerate() {
-
-    if (!image) return;
-
-    const url =
-      URL.createObjectURL(image);
-
-    const result =
-      await imageToAscii(
-        url,
-        asciiWidth
-      );
-
-    const png =
-      asciiToPng(result);
-
-    setAscii(result);
-    setAsciiImage(png);
-
-    setHasGenerated(true);
-
-  }
+  return () => clearTimeout(timer);
+}, [asciiWidth]);
 
   return (
     <div>
