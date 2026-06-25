@@ -33,6 +33,9 @@ export default function Home() {
       "grayscale"
     );
 
+  const [hasStarted, setHasStarted] =
+    useState(false);
+
   console.log("asciiImage", asciiImage);
 
   const generateAscii = async () => {
@@ -59,11 +62,6 @@ export default function Home() {
 
   };
 
-  useEffect(() => {
-    if (!image) return;
-
-    generateAscii();
-  }, [image, asciiMode]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -113,6 +111,8 @@ export default function Home() {
                 generateAscii={generateAscii}
                 asciiMode={asciiMode}
                 setAsciiMode={setAsciiMode}
+                hasStarted={hasStarted}
+                setHasStarted={setHasStarted}
               />
             </>
           )}

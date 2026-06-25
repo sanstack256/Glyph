@@ -30,6 +30,12 @@ interface Props {
   setAsciiMode: (
     value: "grayscale" | "color"
   ) => void;
+
+  hasStarted: boolean;
+
+  setHasStarted: (
+    value: boolean
+  ) => void;
 }
 
 
@@ -44,6 +50,9 @@ export default function ControlPanel({
   generateAscii,
   asciiMode,
   setAsciiMode,
+  hasStarted,
+  setHasStarted,
+
 }: Props) {
 
   useEffect(() => {
@@ -59,16 +68,18 @@ export default function ControlPanel({
   return (
     <div>
 
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <p className="mb-3 text-sm">
-          Style
+          Choose a Style
         </p>
 
-        <div className="flex gap-2">
+        <div className="flex justify-center gap-2">
           <button
-            onClick={() =>
-              setAsciiMode("grayscale")
-            }
+            onClick={async () => {
+              setAsciiMode("grayscale");
+              setHasStarted(true);
+              await generateAscii();
+            }}
             className={`
         rounded-xl px-4 py-2
         ${asciiMode === "grayscale"
@@ -80,9 +91,11 @@ export default function ControlPanel({
           </button>
 
           <button
-            onClick={() =>
-              setAsciiMode("color")
-            }
+            onClick={async () => {
+              setAsciiMode("color");
+              setHasStarted(true);
+              await generateAscii();
+            }}
             className={`
         rounded-xl px-4 py-2
         ${asciiMode === "color"
@@ -95,32 +108,35 @@ export default function ControlPanel({
         </div>
       </div>
 
-      <div className="mb-6">
-        <p className="mb-3 text-sm text-muted">
-          ASCII artwork updates automatically.
-        </p>
-        <div className="mb-2 flex justify-between">
-          <span>Detail</span>
-          <span>{asciiWidth}</span>
+
+      {hasStarted && (
+        <div className="mb-6">
+          <p className="mb-3 text-sm text-muted">
+            ASCII artwork updates automatically.
+          </p>
+          <div className="mb-2 flex justify-between">
+            <span>Detail</span>
+            <span>{asciiWidth}</span>
+          </div>
+
+          <input
+            type="range"
+            min="100"
+            max="500"
+            step="10"
+            value={asciiWidth}
+            onChange={(e) =>
+              setAsciiWidth(
+                Number(e.target.value)
+              )
+            }
+            className="w-full"
+          />
         </div>
-
-        <input
-          type="range"
-          min="100"
-          max="500"
-          step="10"
-          value={asciiWidth}
-          onChange={(e) =>
-            setAsciiWidth(
-              Number(e.target.value)
-            )
-          }
-          className="w-full"
-        />
-      </div>
+      )}
 
 
-      {asciiImage && (
+      {hasStarted && asciiImage && (
         <a
           href={asciiImage}
           onClick={trackDownload}
@@ -146,8 +162,9 @@ export default function ControlPanel({
         >
           Download PNG
         </a>
-      )}
+      )
+      }
 
-    </div>
+    </div >
   );
 }
