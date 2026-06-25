@@ -2,7 +2,7 @@
 
 import { imageToAscii }
   from "@/lib/generators/ascii";
-
+import { useState, useEffect } from "react";
 import type { AsciiPixel } from "@/types";
 import { asciiToPng }
   from "@/lib/export/png";
@@ -34,7 +34,36 @@ export default function ControlPanel({
   setAsciiWidth,
   asciiImage,
 }: Props) {
+
+  const [hasGenerated, setHasGenerated] =
+    useState(false);
+
+  useEffect(() => {
+    setHasGenerated(false);
+  }, [image]);
+
+  useEffect(() => {
+    if (!image || !hasGenerated) return;
+
+    const timer = setTimeout(() => {
+      handleGenerate();
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [asciiWidth]);
+
+
   async function handleGenerate() {
+    useEffect(() => {
+      if (!image || !hasGenerated) return;
+
+      const timer = setTimeout(() => {
+        handleGenerate();
+      }, 300);
+
+      return () => clearTimeout(timer);
+    }, [asciiWidth]);
+
     if (!image) return;
 
     const url =
@@ -51,6 +80,7 @@ export default function ControlPanel({
 
     setAscii(result);
     setAsciiImage(png);
+
   }
 
   return (

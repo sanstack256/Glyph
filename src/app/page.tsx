@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { AsciiPixel } from "@/types";
-
 import Navbar from "@/components/layout/Navbar";
 import UploadZone from "@/components/upload/UploadZone";
 import PreviewPanel from "@/components/preview/PreviewPanel";
 import ControlPanel from "@/components/controls/ControlPanel";
+import { imageToAscii }
+  from "@/lib/generators/ascii";
+
+import { asciiToPng }
+  from "@/lib/export/png";
 
 
 export default function Home() {
@@ -21,6 +25,22 @@ export default function Home() {
     useState(200);
 
   console.log("asciiImage", asciiImage);
+
+  const generateAscii = async () => {
+  if (!image) return;
+
+  const url = URL.createObjectURL(image);
+
+  const result = await imageToAscii(
+    url,
+    asciiWidth
+  );
+
+  const png = asciiToPng(result);
+
+  setAscii(result);
+  setAsciiImage(png);
+};
 
   return (
     <main className="min-h-screen bg-background">
