@@ -2,6 +2,7 @@
 
 import type { AsciiPixel } from "@/types";
 import { useEffect } from "react";
+import { track } from "@vercel/analytics";
 
 
 interface Props {
@@ -37,14 +38,14 @@ export default function ControlPanel({
 }: Props) {
 
   useEffect(() => {
-  if (!asciiImage) return;
+    if (!asciiImage) return;
 
-  const timer = setTimeout(() => {
-    generateAscii();
-  }, 300);
+    const timer = setTimeout(() => {
+      generateAscii();
+    }, 300);
 
-  return () => clearTimeout(timer);
-}, [asciiWidth]);
+    return () => clearTimeout(timer);
+  }, [asciiWidth]);
 
   return (
     <div>
@@ -71,7 +72,10 @@ export default function ControlPanel({
       </div>
 
       <button
-        onClick={generateAscii}
+        onClick={() => {
+          track("generate_ascii");
+          generateAscii();
+        }}
         className="w-full rounded-xl bg-white px-4 py-3 font-medium text-black"
       >
         Generate ASCII
