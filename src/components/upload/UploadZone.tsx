@@ -5,6 +5,10 @@ interface UploadZoneProps {
 
   generateAscii: () => Promise<void>;
 
+  setGenerateTracked: (
+    value: boolean
+  ) => void;
+
   setImage: (
     file: File | null
   ) => void;
@@ -23,6 +27,8 @@ export default function UploadZone({
   setAscii,
   setAsciiImage,
   generateAscii,
+  setGenerateTracked,
+
 }: UploadZoneProps) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -38,6 +44,7 @@ export default function UploadZone({
 
     setAscii([]);
     setAsciiImage(null);
+    setGenerateTracked(false);
   };
 
   return (

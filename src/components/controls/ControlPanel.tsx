@@ -25,7 +25,7 @@ interface Props {
     value: number
   ) => void;
 
-  asciiMode: "grayscale" | "color";
+  asciiMode: "grayscale" | "color" | null;
 
   setAsciiMode: (
     value: "grayscale" | "color"
@@ -75,10 +75,9 @@ export default function ControlPanel({
 
         <div className="flex justify-center gap-2">
           <button
-            onClick={async () => {
+            onClick={() => {
               setAsciiMode("grayscale");
               setHasStarted(true);
-              await generateAscii();
             }}
             className={`
         rounded-xl px-4 py-2
@@ -91,10 +90,9 @@ export default function ControlPanel({
           </button>
 
           <button
-            onClick={async () => {
+            onClick={() => {
               setAsciiMode("color");
               setHasStarted(true);
-              await generateAscii();
             }}
             className={`
         rounded-xl px-4 py-2

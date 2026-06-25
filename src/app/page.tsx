@@ -29,11 +29,14 @@ export default function Home() {
     useState(200);
 
   const [asciiMode, setAsciiMode] =
-    useState<"grayscale" | "color">(
-      "grayscale"
-    );
+    useState<
+      "grayscale" | "color" | null
+    >(null);
 
   const [hasStarted, setHasStarted] =
+    useState(false);
+
+  const [generateTracked, setGenerateTracked] =
     useState(false);
 
   console.log("asciiImage", asciiImage);
@@ -42,7 +45,6 @@ export default function Home() {
 
     if (!image) return;
 
-    await trackGenerate();
 
     const url = URL.createObjectURL(image);
 
@@ -61,6 +63,21 @@ export default function Home() {
 
 
   };
+
+  useEffect(() => {
+    if (!image) return;
+    if (!asciiMode) return;
+
+    generateAscii();
+  }, [asciiMode]);
+
+  useEffect(() => {
+    if (!asciiImage) return;
+    if (generateTracked) return;
+
+    trackGenerate();
+    setGenerateTracked(true);
+  }, [asciiImage]);
 
 
   return (
@@ -92,6 +109,7 @@ export default function Home() {
             setAscii={setAscii}
             setAsciiImage={setAsciiImage}
             generateAscii={generateAscii}
+            setGenerateTracked={setGenerateTracked}
           />
 
           {image && (
