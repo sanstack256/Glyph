@@ -51,7 +51,12 @@ export default function ControlPanel({
   return (
     <div>
 
+
+
       <div className="mb-6">
+        <p className="mb-3 text-sm text-muted">
+          ASCII artwork updates automatically.
+        </p>
         <div className="mb-2 flex justify-between">
           <span>Detail</span>
           <span>{asciiWidth}</span>
@@ -72,30 +77,6 @@ export default function ControlPanel({
         />
       </div>
 
-      <button
-        onClick={() => {
-          track("generate_ascii");
-          generateAscii();
-        }}
-        className="
-  w-full
-  cursor-pointer
-  rounded-xl
-  bg-white
-  px-4
-  py-3
-  font-medium
-  text-black
-  transition-all
-  duration-200
-  hover:-translate-y-0.5
-  hover:shadow-lg
-  active:translate-y-0
-  active:scale-[0.98]
-"
-      >
-        Generate ASCII
-      </button>
 
       {asciiImage && (
         <a
@@ -103,25 +84,23 @@ export default function ControlPanel({
           onClick={trackDownload}
           download="glyph-ascii.png"
           className="
-      mt-3
-      block
-      w-full
-      rounded-xl
-      border
-      border-white/20
-      px-4
-      py-3
-      text-center
-      font-medium
-      hover:bg-white/10
-      cursor-pointer
-      transition-all
-      duration-200
-      hover:-translate-y-0.5
-      hover:border-white/40
-      hover:bg-white/10
-      active:scale-[0.98]
-    "
+  mt-3
+  block
+  w-full
+  cursor-pointer
+  rounded-xl
+  bg-white
+  px-4
+  py-3
+  text-center
+  font-medium
+  text-black
+  transition-all
+  duration-200
+  hover:-translate-y-0.5
+  hover:shadow-lg
+  active:scale-[0.98]
+"
         >
           Download PNG
         </a>
