@@ -10,6 +10,7 @@ import { asciiToPng }
 interface Props {
   image: File | null;
   asciiImage: string | null;
+  generateAscii: () => Promise<void>;
 
   setAscii: (
     value: AsciiPixel[][]
@@ -33,6 +34,7 @@ export default function ControlPanel({
   asciiWidth,
   setAsciiWidth,
   asciiImage,
+  generateAscii,
 }: Props) {
 
   const [hasGenerated, setHasGenerated] =
@@ -101,7 +103,7 @@ export default function ControlPanel({
       </div>
 
       <button
-        onClick={handleGenerate}
+        onClick={generateAscii}
         className="w-full rounded-xl bg-white px-4 py-3 font-medium text-black"
       >
         Generate ASCII

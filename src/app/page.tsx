@@ -40,7 +40,15 @@ export default function Home() {
 
     setAscii(result);
     setAsciiImage(png);
+
+
   };
+
+  useEffect(() => {
+  if (!image) return;
+
+  generateAscii();
+}, [image]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -84,6 +92,7 @@ export default function Home() {
             asciiWidth={asciiWidth}
             setAsciiWidth={setAsciiWidth}
             asciiImage={asciiImage}
+            generateAscii={generateAscii}
           />
 
 

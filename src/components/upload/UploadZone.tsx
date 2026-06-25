@@ -3,6 +3,7 @@ import type { AsciiPixel } from "@/types";
 interface UploadZoneProps {
   image: File | null;
 
+
   setImage: (
     file: File | null
   ) => void;
@@ -21,6 +22,7 @@ export default function UploadZone({
   setAscii,
   setAsciiImage,
 
+
 }: UploadZoneProps) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -29,12 +31,13 @@ export default function UploadZone({
 
     if (!file) return;
 
-    setImage(file);
+
 
     // clear previous generation
+    setImage(file);
+
     setAscii([]);
     setAsciiImage(null);
-    console.log("CLEARED");
   };
 
   return (
