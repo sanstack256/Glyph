@@ -108,6 +108,8 @@ export default function Home() {
             setImage={setImage}
             setAscii={setAscii}
             setAsciiImage={setAsciiImage}
+            setAsciiMode={setAsciiMode}
+            setHasStarted={setHasStarted}
             generateAscii={generateAscii}
             setGenerateTracked={setGenerateTracked}
           />

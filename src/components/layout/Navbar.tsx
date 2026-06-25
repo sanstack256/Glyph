@@ -108,9 +108,8 @@ export default function Navbar() {
                   result, download it as a PNG.
                 </p>
 
-                <p>
-                  ASCII Art Generator
-                  Version 1.0
+                <p className="pt-2 text-center text-xs text-white/40">
+                  ASCII Art Generator • v1.0
                 </p>
 
               </div>
