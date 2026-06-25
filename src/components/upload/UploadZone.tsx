@@ -34,6 +34,7 @@ export default function UploadZone({
     // clear previous generation
     setAscii([]);
     setAsciiImage(null);
+    console.log("CLEARED");
   };
 
   return (

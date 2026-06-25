@@ -20,6 +20,8 @@ export default function Home() {
   const [asciiWidth, setAsciiWidth] =
     useState(200);
 
+  console.log("asciiImage", asciiImage);
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
