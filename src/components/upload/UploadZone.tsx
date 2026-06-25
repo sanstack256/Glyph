@@ -3,6 +3,7 @@ import type { AsciiPixel } from "@/types";
 interface UploadZoneProps {
   image: File | null;
 
+  generateAscii: () => Promise<void>;
 
   setImage: (
     file: File | null

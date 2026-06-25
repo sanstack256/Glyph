@@ -45,10 +45,10 @@ export default function Home() {
   };
 
   useEffect(() => {
-  if (!image) return;
+    if (!image) return;
 
-  generateAscii();
-}, [image]);
+    generateAscii();
+  }, [image]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -79,21 +79,27 @@ export default function Home() {
             setImage={setImage}
             setAscii={setAscii}
             setAsciiImage={setAsciiImage}
-          />
-
-          <PreviewPanel
-            image={image}
-            asciiImage={asciiImage}
-          />
-          <ControlPanel
-            image={image}
-            setAscii={setAscii}
-            setAsciiImage={setAsciiImage}
-            asciiWidth={asciiWidth}
-            setAsciiWidth={setAsciiWidth}
-            asciiImage={asciiImage}
             generateAscii={generateAscii}
           />
+
+          {image && (
+            <>
+              <PreviewPanel
+                image={image}
+                asciiImage={asciiImage}
+              />
+
+              <ControlPanel
+                image={image}
+                setAscii={setAscii}
+                setAsciiImage={setAsciiImage}
+                asciiWidth={asciiWidth}
+                setAsciiWidth={setAsciiWidth}
+                asciiImage={asciiImage}
+                generateAscii={generateAscii}
+              />
+            </>
+          )}
 
 
 
