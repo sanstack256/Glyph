@@ -72,6 +72,8 @@ export default function ControlPanel({
     setAscii(result);
     setAsciiImage(png);
 
+    setHasGenerated(true);
+
   }
 
   return (
