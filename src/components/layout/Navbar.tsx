@@ -11,9 +11,22 @@ export default function Navbar() {
 
         </div>
 
-        <button className="rounded-lg border border-border px-4 py-2 text-sm transition hover:bg-surface-hover">
+        <a
+          href="https://github.com/sanstack256/Glyph"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+    rounded-xl
+    border
+    border-white/20
+    px-4
+    py-2
+    transition
+    hover:bg-white/10
+  "
+        >
           GitHub
-        </button>
+        </a>
       </div>
     </header>
   );
