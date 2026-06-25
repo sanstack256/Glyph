@@ -1,10 +1,8 @@
+import type { AsciiPixel } from "@/types";
+
 const ASCII_CHARS =
     " .'`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 
-export interface AsciiPixel {
-    char: string;
-    brightness: number;
-}
 
 export function brightnessToChar(
     brightness: number
@@ -89,6 +87,10 @@ export async function imageToAscii(
             row.push({
                 char: brightnessToChar(brightness),
                 brightness,
+
+                r,
+                g,
+                b,
             });
         }
 

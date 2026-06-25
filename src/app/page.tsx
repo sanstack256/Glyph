@@ -13,6 +13,9 @@ import { imageToAscii }
 import { asciiToPng }
   from "@/lib/export/png";
 
+import { asciiToColorPng }
+  from "@/lib/export/colorPng";
+
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null);
@@ -24,6 +27,11 @@ export default function Home() {
 
   const [asciiWidth, setAsciiWidth] =
     useState(200);
+
+  const [asciiMode, setAsciiMode] =
+    useState<"grayscale" | "color">(
+      "grayscale"
+    );
 
   console.log("asciiImage", asciiImage);
 
@@ -40,7 +48,10 @@ export default function Home() {
       asciiWidth
     );
 
-    const png = asciiToPng(result);
+    const png =
+      asciiMode === "color"
+        ? asciiToColorPng(result)
+        : asciiToPng(result);
 
     setAscii(result);
     setAsciiImage(png);
@@ -52,7 +63,7 @@ export default function Home() {
     if (!image) return;
 
     generateAscii();
-  }, [image]);
+  }, [image, asciiMode]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -100,6 +111,8 @@ export default function Home() {
                 setAsciiWidth={setAsciiWidth}
                 asciiImage={asciiImage}
                 generateAscii={generateAscii}
+                asciiMode={asciiMode}
+                setAsciiMode={setAsciiMode}
               />
             </>
           )}

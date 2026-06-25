@@ -24,6 +24,12 @@ interface Props {
   setAsciiWidth: (
     value: number
   ) => void;
+
+  asciiMode: "grayscale" | "color";
+
+  setAsciiMode: (
+    value: "grayscale" | "color"
+  ) => void;
 }
 
 
@@ -36,6 +42,8 @@ export default function ControlPanel({
   setAsciiWidth,
   asciiImage,
   generateAscii,
+  asciiMode,
+  setAsciiMode,
 }: Props) {
 
   useEffect(() => {
@@ -51,7 +59,41 @@ export default function ControlPanel({
   return (
     <div>
 
+      <div className="mb-6">
+        <p className="mb-3 text-sm">
+          Style
+        </p>
 
+        <div className="flex gap-2">
+          <button
+            onClick={() =>
+              setAsciiMode("grayscale")
+            }
+            className={`
+        rounded-xl px-4 py-2
+        ${asciiMode === "grayscale"
+                ? "bg-white text-black"
+                : "border border-white/20"}
+      `}
+          >
+            Classic
+          </button>
+
+          <button
+            onClick={() =>
+              setAsciiMode("color")
+            }
+            className={`
+        rounded-xl px-4 py-2
+        ${asciiMode === "color"
+                ? "bg-white text-black"
+                : "border border-white/20"}
+      `}
+          >
+            Color
+          </button>
+        </div>
+      </div>
 
       <div className="mb-6">
         <p className="mb-3 text-sm text-muted">
