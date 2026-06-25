@@ -53,23 +53,9 @@ export function asciiToColorPng(
             const factor =
                 1.0 + (pixel.brightness / 255) * 0.6;
 
-            const r =
-                Math.min(
-                    255,
-                    pixel.r * factor
-                );
-
-            const g =
-                Math.min(
-                    255,
-                    pixel.g * factor
-                );
-
-            const b =
-                Math.min(
-                    255,
-                    pixel.b * factor
-                );
+            const r = pixel.r;
+            const g = pixel.g;
+            const b = pixel.b;
 
             ctx.fillStyle =
                 `rgb(${r}, ${g}, ${b})`;
