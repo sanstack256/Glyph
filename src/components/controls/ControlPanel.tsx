@@ -77,7 +77,22 @@ export default function ControlPanel({
           track("generate_ascii");
           generateAscii();
         }}
-        className="w-full rounded-xl bg-white px-4 py-3 font-medium text-black"
+        className="
+  w-full
+  cursor-pointer
+  rounded-xl
+  bg-white
+  px-4
+  py-3
+  font-medium
+  text-black
+  transition-all
+  duration-200
+  hover:-translate-y-0.5
+  hover:shadow-lg
+  active:translate-y-0
+  active:scale-[0.98]
+"
       >
         Generate ASCII
       </button>
@@ -98,8 +113,14 @@ export default function ControlPanel({
       py-3
       text-center
       font-medium
-      transition
       hover:bg-white/10
+      cursor-pointer
+      transition-all
+      duration-200
+      hover:-translate-y-0.5
+      hover:border-white/40
+      hover:bg-white/10
+      active:scale-[0.98]
     "
         >
           Download PNG
