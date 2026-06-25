@@ -27,20 +27,20 @@ export default function Home() {
   console.log("asciiImage", asciiImage);
 
   const generateAscii = async () => {
-  if (!image) return;
+    if (!image) return;
 
-  const url = URL.createObjectURL(image);
+    const url = URL.createObjectURL(image);
 
-  const result = await imageToAscii(
-    url,
-    asciiWidth
-  );
+    const result = await imageToAscii(
+      url,
+      asciiWidth
+    );
 
-  const png = asciiToPng(result);
+    const png = asciiToPng(result);
 
-  setAscii(result);
-  setAsciiImage(png);
-};
+    setAscii(result);
+    setAsciiImage(png);
+  };
 
   return (
     <main className="min-h-screen bg-background">
@@ -73,6 +73,10 @@ export default function Home() {
             setAsciiImage={setAsciiImage}
           />
 
+          <PreviewPanel
+            image={image}
+            asciiImage={asciiImage}
+          />
           <ControlPanel
             image={image}
             setAscii={setAscii}
@@ -82,10 +86,6 @@ export default function Home() {
             asciiImage={asciiImage}
           />
 
-          <PreviewPanel
-            image={image}
-            asciiImage={asciiImage}
-          />
 
 
         </div>
