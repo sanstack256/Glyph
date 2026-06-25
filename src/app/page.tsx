@@ -45,7 +45,13 @@ export default function Home() {
         </div>
 
         <div className="space-y-6">
-         
+
+          <UploadZone
+            image={image}
+            setImage={setImage}
+            setAscii={setAscii}
+            setAsciiImage={setAsciiImage}
+          />
 
           <ControlPanel
             image={image}
@@ -61,12 +67,6 @@ export default function Home() {
             asciiImage={asciiImage}
           />
 
-          <UploadZone
-            image={image}
-            setImage={setImage}
-            setAscii={setAscii}
-            setAsciiImage={setAsciiImage}
-          />
 
         </div>
       </section>
