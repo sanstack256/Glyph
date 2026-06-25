@@ -27,6 +27,7 @@ export default function Home() {
   console.log("asciiImage", asciiImage);
 
   const generateAscii = async () => {
+
     if (!image) return;
 
     const url = URL.createObjectURL(image);
