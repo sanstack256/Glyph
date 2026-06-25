@@ -64,6 +64,15 @@ export default function Home() {
 
         </div>
       </section>
+
+      <footer className="mt-24 border-t border-white/10 py-6">
+        <div className="mx-auto max-w-6xl px-6 text-center text-sm text-white/50">
+          Glyph © {new Date().getFullYear()} ·
+          Logo effect inspired by TextStudio.com
+        </div>
+      </footer>
+
+
     </main>
   );
 }

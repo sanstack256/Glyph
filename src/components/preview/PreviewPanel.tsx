@@ -1,6 +1,6 @@
 "use client";
 
-import { Eye } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 import { useState } from "react";
 
@@ -25,6 +25,9 @@ export default function PreviewPanel({
     showOriginal
       ? imageUrl
       : asciiImage;
+
+  const [isTouchDevice, setIsTouchDevice] =
+    useState(false);
 
   return (
     <div className="flex h-[500px] items-center justify-center bg-black">
@@ -53,40 +56,41 @@ export default function PreviewPanel({
             />
 
             <button
-              onMouseDown={() =>
-                setShowOriginal(true)
+              onClick={() =>
+                setShowOriginal(
+                  (prev) => !prev
+                )
               }
-              onMouseUp={() =>
-                setShowOriginal(false)
+              onContextMenu={(e) =>
+                e.preventDefault()
               }
-              onMouseLeave={() =>
-                setShowOriginal(false)
-              }
-              onTouchStart={() =>
-                setShowOriginal(true)
-              }
-              onTouchEnd={() =>
-                setShowOriginal(false)
-              }
+              style={{
+                WebkitTouchCallout: "none",
+              }}
               className="
-    absolute
-    top-3
-    right-3
-    flex
-    h-10
-    w-10
-    items-center
-    justify-center
-    rounded-full
-    border
-    border-white/20
-    bg-black/70
-    backdrop-blur-md
-    transition
-    hover:bg-black/90
-  "
+                absolute
+                top-3
+                right-3
+                flex
+                h-10
+                w-10
+                select-none
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-white/20
+                bg-black/70
+                backdrop-blur-md
+                transition
+                hover:bg-black/90
+              "
             >
-              <Eye size={18} />
+              {showOriginal ? (
+                <EyeOff size={18} />
+              ) : (
+                <Eye size={18} />
+              )}
             </button>
 
           </div>
