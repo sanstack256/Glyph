@@ -54,15 +54,6 @@ export default function ControlPanel({
 
 
   async function handleGenerate() {
-    useEffect(() => {
-      if (!image || !hasGenerated) return;
-
-      const timer = setTimeout(() => {
-        handleGenerate();
-      }, 300);
-
-      return () => clearTimeout(timer);
-    }, [asciiWidth]);
 
     if (!image) return;
 
