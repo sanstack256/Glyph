@@ -14,3 +14,12 @@ export async function trackGenerate() {
     }
   );
 }
+
+export async function trackDownload() {
+  await updateDoc(
+    doc(db, "analytics", "global"),
+    {
+      downloadCount: increment(1),
+    }
+  );
+}

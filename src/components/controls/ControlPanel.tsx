@@ -3,6 +3,7 @@
 import type { AsciiPixel } from "@/types";
 import { useEffect } from "react";
 import { track } from "@vercel/analytics";
+import { trackDownload } from "@/lib/analytics";
 
 
 interface Props {
@@ -84,6 +85,7 @@ export default function ControlPanel({
       {asciiImage && (
         <a
           href={asciiImage}
+          onClick={trackDownload}
           download="glyph-ascii.png"
           className="
       mt-3
