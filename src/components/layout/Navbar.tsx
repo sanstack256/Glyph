@@ -41,70 +41,85 @@ export default function Navbar() {
       </div>
 
 
-{
-    showModal && (
-      <div
-        className="
-      fixed
-      inset-0
-      z-50
-      flex
-      items-center
-      justify-center
-      bg-black/70
-      backdrop-blur-sm
-    "
-        onClick={() =>
-          setShowModal(false)
-        }
-      >
-        <div
-          onClick={(e) =>
-            e.stopPropagation()
-          }
-          className="
-        w-full
-        max-w-md
-        rounded-3xl
-        border
-        border-white/10
-        bg-[#111]
-        p-6
-      "
-        >
-          <h2 className="mb-4 text-xl font-semibold">
-            How Glyph Works
-          </h2>
+      {
+        showModal && (
+          <div
+            className="
+  fixed
+  inset-0
+  z-50
+  flex
+  items-center
+  justify-center
+  bg-black/70
+  backdrop-blur-sm
+  animate-in
+  fade-in
+  duration-200
+"
 
-          <div className="space-y-3 text-sm text-white/70">
-            <p>1. Upload an image.</p>
-
-            <p>
-              2. Glyph analyzes image
-              brightness.
-            </p>
-
-            <p>
-              3. Brightness values are
-              converted into ASCII
-              characters.
-            </p>
-
-            <p>
-              4. Adjust the Detail slider
-              to control quality.
-            </p>
-
-            <p>
-              5. Download your artwork.
-            </p>
-          </div>
-
-          <button
             onClick={() =>
               setShowModal(false)
             }
-            className="
+          >
+            <div
+              onClick={(e) =>
+                e.stopPropagation()
+              }
+              className="
+
+  w-full
+  max-w-md
+  rounded-3xl
+  border
+  border-white/10
+  bg-[#111]
+  p-6
+  shadow-2xl
+  animate-in
+  zoom-in-95
+  duration-200
+"
+            >
+              <h2 className="mb-4 text-xl font-semibold">
+                How Glyph Works
+              </h2>
+
+              <div className="space-y-4 text-sm text-white/70">
+
+                <p>
+                  Upload any image to begin.
+                </p>
+
+                <p>
+                  Glyph analyzes the brightness
+                  of every pixel and maps it to
+                  carefully selected ASCII
+                  characters.
+                </p>
+
+                <p>
+                  Increase the Detail slider for
+                  sharper, more detailed artwork.
+                </p>
+
+                <p>
+                  When you're happy with the
+                  result, download it as a PNG.
+                </p>
+
+                <p>
+                  ASCII Art Generator
+                  Version 1.0
+                </p>
+
+              </div>
+
+              <button
+                onClick={() =>
+                  setShowModal(false)
+                }
+                className="
           mt-6
           w-full
           rounded-xl
@@ -112,13 +127,13 @@ export default function Navbar() {
           py-2
           text-black
         "
-          >
-            Got it
-          </button>
-        </div>
-      </div>
-    )
-  }
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        )
+      }
 
 
     </header >

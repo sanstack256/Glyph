@@ -30,9 +30,9 @@ export default function Home() {
   const generateAscii = async () => {
 
     if (!image) return;
-    
+
     await trackGenerate();
-    
+
     const url = URL.createObjectURL(image);
 
     const result = await imageToAscii(
@@ -118,6 +118,7 @@ export default function Home() {
           <p className="mt-2 text-xs text-white/40">
             Logo effect generated using TextStudio.com
           </p>
+
         </div>
       </footer>
 
