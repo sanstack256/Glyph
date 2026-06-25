@@ -1,5 +1,7 @@
 "use client";
 
+import { Eye } from "lucide-react";
+
 import { useState } from "react";
 
 
@@ -37,48 +39,58 @@ export default function PreviewPanel({
     justify-center
   "
         >
-          <img
-            src={displayedImage || ""}
-            alt="Preview"
-            className="
-    max-h-[420px]
-    max-w-full
-    object-contain
-  "
-          />
 
-          <button
-            onMouseDown={() =>
-              setShowOriginal(true)
-            }
-            onMouseUp={() =>
-              setShowOriginal(false)
-            }
-            onMouseLeave={() =>
-              setShowOriginal(false)
-            }
-            onTouchStart={() =>
-              setShowOriginal(true)
-            }
-            onTouchEnd={() =>
-              setShowOriginal(false)
-            }
-            className="
-        mt-4
-        rounded-xl
-        border
-        border-white/20
-        px-4
-        py-2
-        text-sm
-        transition
-        hover:bg-white/10
+          <div className="relative">
+
+            <img
+              src={displayedImage || ""}
+              alt="Preview"
+              className="
+        max-h-[420px]
+        max-w-full
+        object-contain
       "
-          >
-            {showOriginal
-              ? "Viewing original"
-              : "Hold to view original"}
-          </button>
+            />
+
+            <button
+              onMouseDown={() =>
+                setShowOriginal(true)
+              }
+              onMouseUp={() =>
+                setShowOriginal(false)
+              }
+              onMouseLeave={() =>
+                setShowOriginal(false)
+              }
+              onTouchStart={() =>
+                setShowOriginal(true)
+              }
+              onTouchEnd={() =>
+                setShowOriginal(false)
+              }
+              className="
+    absolute
+    top-3
+    right-3
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-white/20
+    bg-black/70
+    backdrop-blur-md
+    transition
+    hover:bg-black/90
+  "
+            >
+              <Eye size={18} />
+            </button>
+
+          </div>
+
         </div>
       ) : image ? (
         <img
