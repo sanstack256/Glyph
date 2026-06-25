@@ -1,5 +1,6 @@
 "use client";
 
+import { trackGenerate } from "@/lib/analytics";
 import { useState, useEffect } from "react";
 import type { AsciiPixel } from "@/types";
 import Navbar from "@/components/layout/Navbar";
@@ -29,7 +30,9 @@ export default function Home() {
   const generateAscii = async () => {
 
     if (!image) return;
-
+    
+    await trackGenerate();
+    
     const url = URL.createObjectURL(image);
 
     const result = await imageToAscii(
