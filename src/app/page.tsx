@@ -67,8 +67,7 @@ export default function Home() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
-            Create stunning ASCII art, dot art, and symbol-based
-            artwork directly in your browser.
+            Transform any image into stunning ASCII artwork in seconds.
           </p>
         </div>
 
