@@ -81,10 +81,16 @@ export async function imageToAscii(
             const b =
                 data.data[offset + 2];
 
-            const brightness =
+            let brightness =
                 0.299 * r +
                 0.587 * g +
                 0.114 * b;
+
+            brightness =
+                Math.min(
+                    255,
+                    brightness * 1.25
+                );
 
             row.push({
                 char: brightnessToChar(brightness),

@@ -51,7 +51,7 @@ export function asciiToColorPng(
                 ascii[y][x];
 
             const factor =
-                0.6 + (pixel.brightness / 255) * 0.8;
+                1.0 + (pixel.brightness / 255) * 0.6;
 
             const r =
                 Math.min(
