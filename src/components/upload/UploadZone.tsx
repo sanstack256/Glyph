@@ -22,8 +22,7 @@ export default function UploadZone({
   setImage,
   setAscii,
   setAsciiImage,
-
-
+  generateAscii,
 }: UploadZoneProps) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
