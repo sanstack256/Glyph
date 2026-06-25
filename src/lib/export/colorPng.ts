@@ -3,7 +3,7 @@ import type { AsciiPixel } from "@/types";
 export function asciiToColorPng(
     ascii: AsciiPixel[][]
 ) {
-    const fontSize = 10;
+    const fontSize = 14;
 
     const canvas =
         document.createElement("canvas");
@@ -53,9 +53,22 @@ export function asciiToColorPng(
             const factor =
                 1.0 + (pixel.brightness / 255) * 0.6;
 
-            const r = pixel.r;
-            const g = pixel.g;
-            const b = pixel.b;
+            const brightnessBoost = 1.25;
+
+            const r = Math.min(
+                255,
+                pixel.r * brightnessBoost
+            );
+
+            const g = Math.min(
+                255,
+                pixel.g * brightnessBoost
+            );
+
+            const b = Math.min(
+                255,
+                pixel.b * brightnessBoost
+            );
 
             ctx.fillStyle =
                 `rgb(${r}, ${g}, ${b})`;
