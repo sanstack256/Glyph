@@ -43,10 +43,7 @@ export default function Home() {
         </div>
 
         <div className="space-y-6">
-          <UploadZone
-            image={image}
-            setImage={setImage}
-          />
+         
 
           <ControlPanel
             image={image}
@@ -60,6 +57,13 @@ export default function Home() {
           <PreviewPanel
             image={image}
             asciiImage={asciiImage}
+          />
+
+          <UploadZone
+            image={image}
+            setImage={setImage}
+            setAscii={setAscii}
+            setAsciiImage={setAsciiImage}
           />
 
         </div>
