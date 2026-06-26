@@ -3,7 +3,7 @@ import type { AsciiPixel } from "@/types";
 export function colorDotToPng(
     ascii: AsciiPixel[][]
 ) {
-    const cellSize = 14;
+    const cellSize = 20;
 
     const canvas =
         document.createElement("canvas");
