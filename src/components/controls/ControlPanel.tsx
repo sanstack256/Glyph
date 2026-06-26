@@ -25,10 +25,10 @@ interface Props {
     value: number
   ) => void;
 
-  asciiMode: "grayscale" | "color" | null;
+  asciiMode: "grayscale" | "color" | "dots" | null;
 
   setAsciiMode: (
-    value: "grayscale" | "color"
+    value: "grayscale" | "color" | "dots"
   ) => void;
 
   hasStarted: boolean;
@@ -102,6 +102,22 @@ export default function ControlPanel({
       `}
           >
             Color
+          </button>
+
+          <button
+            onClick={() => {
+              setAsciiMode("dots");
+              setHasStarted(true);
+            }}
+            className={`
+    rounded-xl px-4 py-2
+    ${asciiMode === "dots"
+                ? "bg-white text-black"
+                : "border border-white/20"
+              }
+  `}
+          >
+            Dots
           </button>
         </div>
       </div>

@@ -16,6 +16,9 @@ import { asciiToPng }
 import { asciiToColorPng }
   from "@/lib/export/colorPng";
 
+import { dotToPng }
+  from "@/lib/export/dotPng";
+
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null);
@@ -30,7 +33,7 @@ export default function Home() {
 
   const [asciiMode, setAsciiMode] =
     useState<
-      "grayscale" | "color" | null
+      "grayscale" | "color" | "dots" | null
     >(null);
 
   const [hasStarted, setHasStarted] =
@@ -53,10 +56,15 @@ export default function Home() {
       asciiWidth
     );
 
-    const png =
-      asciiMode === "color"
-        ? asciiToColorPng(result)
-        : asciiToPng(result);
+    let png: string | null;
+
+    if (asciiMode === "color") {
+      png = asciiToColorPng(result);
+    } else if (asciiMode === "dots") {
+      png = dotToPng(result);
+    } else {
+      png = asciiToPng(result);
+    }
 
     setAscii(result);
     setAsciiImage(png);

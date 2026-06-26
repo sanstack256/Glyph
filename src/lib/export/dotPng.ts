@@ -58,10 +58,14 @@ export function dotToPng(
 
             ctx.beginPath();
 
+            const radius =
+                0.5 +
+                (pixel.brightness / 255) * 3;
+
             ctx.arc(
                 x * fontSize + fontSize / 2,
                 y * fontSize + fontSize / 2,
-                2,
+                radius,
                 0,
                 Math.PI * 2
             );
