@@ -184,7 +184,7 @@ export default function Home() {
       <footer className="mt-24 border-t border-white/10 py-6">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <p className="text-sm text-white/60">
-            Glyph © 2026
+            Glyph • v1.0 • 2026
           </p>
 
           <p className="mt-2 text-xs text-white/40">
