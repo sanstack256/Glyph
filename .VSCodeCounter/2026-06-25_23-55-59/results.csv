@@ -1,0 +1,31 @@
+"filename", "language", "TypeScript", "TypeScript JSX", "PostCSS", "JavaScript", "XML", "JSON", "JSON with Comments", "Markdown", "comment", "blank", "total"
+"/Users/nssanjeev/glyph/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 23, 0, 14, 37
+"/Users/nssanjeev/glyph/eslint.config.mjs", "JavaScript", 0, 0, 0, 14, 0, 0, 0, 0, 2, 3, 19
+"/Users/nssanjeev/glyph/next.config.ts", "TypeScript", 4, 0, 0, 0, 0, 0, 0, 0, 1, 3, 8
+"/Users/nssanjeev/glyph/package-lock.json", "JSON", 0, 0, 0, 0, 0, 7736, 0, 0, 0, 1, 7737
+"/Users/nssanjeev/glyph/package.json", "JSON", 0, 0, 0, 0, 0, 29, 0, 0, 0, 1, 30
+"/Users/nssanjeev/glyph/postcss.config.mjs", "JavaScript", 0, 0, 0, 6, 0, 0, 0, 0, 0, 2, 8
+"/Users/nssanjeev/glyph/public/file.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"/Users/nssanjeev/glyph/public/globe.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"/Users/nssanjeev/glyph/public/next.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"/Users/nssanjeev/glyph/public/window.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"/Users/nssanjeev/glyph/src/app/globals.css", "PostCSS", 0, 0, 32, 0, 0, 0, 0, 0, 0, 10, 42
+"/Users/nssanjeev/glyph/src/app/layout.tsx", "TypeScript JSX", 0, 34, 0, 0, 0, 0, 0, 0, 0, 7, 41
+"/Users/nssanjeev/glyph/src/app/page.tsx", "TypeScript JSX", 0, 120, 0, 0, 0, 0, 0, 0, 0, 41, 161
+"/Users/nssanjeev/glyph/src/components/controls/ControlPanel.tsx", "TypeScript JSX", 0, 140, 0, 0, 0, 0, 0, 0, 0, 28, 168
+"/Users/nssanjeev/glyph/src/components/layout/Navbar.tsx", "TypeScript JSX", 0, 119, 0, 0, 0, 0, 0, 0, 0, 21, 140
+"/Users/nssanjeev/glyph/src/components/preview/PreviewPanel.tsx", "TypeScript JSX", 0, 97, 0, 0, 0, 0, 0, 0, 0, 15, 112
+"/Users/nssanjeev/glyph/src/components/upload/UploadZone.tsx", "TypeScript JSX", 0, 67, 0, 0, 0, 0, 0, 0, 1, 19, 87
+"/Users/nssanjeev/glyph/src/lib/analytics.ts", "TypeScript", 22, 0, 0, 0, 0, 0, 0, 0, 0, 3, 25
+"/Users/nssanjeev/glyph/src/lib/export/colorPng.ts", "TypeScript", 67, 0, 0, 0, 0, 0, 0, 0, 0, 21, 88
+"/Users/nssanjeev/glyph/src/lib/export/png.ts", "TypeScript", 56, 0, 0, 0, 0, 0, 0, 0, 0, 14, 70
+"/Users/nssanjeev/glyph/src/lib/export/txt.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/nssanjeev/glyph/src/lib/firebase.ts", "TypeScript", 12, 0, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"/Users/nssanjeev/glyph/src/lib/generators/ascii.ts", "TypeScript", 82, 0, 0, 0, 0, 0, 0, 0, 0, 28, 110
+"/Users/nssanjeev/glyph/src/lib/generators/braille.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/nssanjeev/glyph/src/lib/generators/dots.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/nssanjeev/glyph/src/lib/image/loadImage.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/nssanjeev/glyph/src/lib/image/resizeImage.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/nssanjeev/glyph/src/types/index.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"/Users/nssanjeev/glyph/tsconfig.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 34, 0, 0, 1, 35
+"Total", "-", 250, 577, 32, 20, 4, 7765, 34, 23, 4, 241, 8950

@@ -1,0 +1,16 @@
+"filename", "language", "TypeScript", "TypeScript JSX", "JSON", "XML", "comment", "blank", "total"
+"/Users/nssanjeev/glyph/package-lock.json", "JSON", 0, 0, 1033, 0, 0, 0, 1033
+"/Users/nssanjeev/glyph/package.json", "JSON", 0, 0, 3, 0, 0, 0, 3
+"/Users/nssanjeev/glyph/public/vercel.svg", "XML", 0, 0, 0, -1, 0, 0, -1
+"/Users/nssanjeev/glyph/src/app/layout.tsx", "TypeScript JSX", 0, 5, 0, 0, 0, 2, 7
+"/Users/nssanjeev/glyph/src/app/page.tsx", "TypeScript JSX", 0, 66, 0, 0, 0, 27, 93
+"/Users/nssanjeev/glyph/src/components/controls/ControlPanel.tsx", "TypeScript JSX", 0, 70, 0, 0, 0, 11, 81
+"/Users/nssanjeev/glyph/src/components/layout/Navbar.tsx", "TypeScript JSX", 0, 101, 0, 0, 0, 19, 120
+"/Users/nssanjeev/glyph/src/components/preview/PreviewPanel.tsx", "TypeScript JSX", 0, 5, 0, 0, 0, 7, 12
+"/Users/nssanjeev/glyph/src/components/upload/UploadZone.tsx", "TypeScript JSX", 0, 29, 0, 0, 1, 12, 42
+"/Users/nssanjeev/glyph/src/lib/analytics.ts", "TypeScript", 22, 0, 0, 0, 0, 3, 25
+"/Users/nssanjeev/glyph/src/lib/export/colorPng.ts", "TypeScript", 67, 0, 0, 0, 0, 21, 88
+"/Users/nssanjeev/glyph/src/lib/firebase.ts", "TypeScript", 12, 0, 0, 0, 0, 3, 15
+"/Users/nssanjeev/glyph/src/lib/generators/ascii.ts", "TypeScript", 7, 0, 0, 0, 0, 3, 10
+"/Users/nssanjeev/glyph/src/types/index.ts", "TypeScript", 3, 0, 0, 0, 0, 1, 4
+"Total", "-", 111, 276, 1036, -1, 1, 109, 1532
