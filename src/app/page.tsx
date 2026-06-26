@@ -33,13 +33,14 @@ export default function Home() {
   const [asciiWidth, setAsciiWidth] =
     useState(200);
 
-  const [asciiMode, setAsciiMode] =
+  const [generator, setGenerator] =
     useState<
-      "grayscale"
-      | "color"
-      | "dots"
-      | "colorDots"
-      | null
+      "ascii" | "dots" | null
+    >(null);
+
+  const [style, setStyle] =
+    useState<
+      "classic" | "color" | null
     >(null);
 
   const [hasStarted, setHasStarted] =
@@ -64,17 +65,32 @@ export default function Home() {
 
     let png: string | null;
 
-    if (asciiMode === "color") {
+    if (
+      generator === "ascii" &&
+      style === "classic"
+    ) {
+      png = asciiToPng(result);
+    }
+    else if (
+      generator === "ascii" &&
+      style === "color"
+    ) {
       png = asciiToColorPng(result);
     }
-    else if (asciiMode === "dots") {
+    else if (
+      generator === "dots" &&
+      style === "classic"
+    ) {
       png = dotToPng(result);
     }
-    else if (asciiMode === "colorDots") {
+    else if (
+      generator === "dots" &&
+      style === "color"
+    ) {
       png = colorDotToPng(result);
     }
     else {
-      png = asciiToPng(result);
+      return;
     }
 
     setAscii(result);
@@ -85,10 +101,11 @@ export default function Home() {
 
   useEffect(() => {
     if (!image) return;
-    if (!asciiMode) return;
+    if (!generator) return;
+    if (!style) return;
 
     generateAscii();
-  }, [asciiMode]);
+  }, [generator, style]);
 
   useEffect(() => {
     if (!asciiImage) return;
@@ -127,7 +144,8 @@ export default function Home() {
             setImage={setImage}
             setAscii={setAscii}
             setAsciiImage={setAsciiImage}
-            setAsciiMode={setAsciiMode}
+            setGenerator={setGenerator}
+            setStyle={setStyle}
             setHasStarted={setHasStarted}
             generateAscii={generateAscii}
             setGenerateTracked={setGenerateTracked}
@@ -148,8 +166,10 @@ export default function Home() {
                 setAsciiWidth={setAsciiWidth}
                 asciiImage={asciiImage}
                 generateAscii={generateAscii}
-                asciiMode={asciiMode}
-                setAsciiMode={setAsciiMode}
+                generator={generator}
+                setGenerator={setGenerator}
+                style={style}
+                setStyle={setStyle}
                 hasStarted={hasStarted}
                 setHasStarted={setHasStarted}
               />

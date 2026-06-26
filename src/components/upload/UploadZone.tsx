@@ -21,8 +21,12 @@ interface UploadZoneProps {
     value: string | null
   ) => void;
 
-  setAsciiMode: (
-    value: "grayscale" | "color" | null
+  setGenerator: (
+    value: "ascii" | "dots" | null
+  ) => void;
+
+  setStyle: (
+    value: "classic" | "color" | null
   ) => void;
 
   setHasStarted: (
@@ -35,7 +39,8 @@ export default function UploadZone({
   setAscii,
   setAsciiImage,
   setGenerateTracked,
-  setAsciiMode,
+  setGenerator,
+  setStyle,
   setHasStarted,
 
 }: UploadZoneProps) {
@@ -53,9 +58,12 @@ export default function UploadZone({
 
     setAscii([]);
     setAsciiImage(null);
-    setGenerateTracked(false);
-    setAsciiMode(null);
+
+    setGenerator(null);
+    setStyle(null);
+
     setHasStarted(false);
+    setGenerateTracked(false);
   };
 
   return (

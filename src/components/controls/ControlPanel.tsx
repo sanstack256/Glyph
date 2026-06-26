@@ -25,16 +25,18 @@ interface Props {
     value: number
   ) => void;
 
-  asciiMode: "grayscale"
-  | "color"
-  | "dots"
-  | "colorDots" | null;
+  generator:
+  "ascii" | "dots" | null;
 
-  setAsciiMode: (
-    value: "grayscale"
-      | "color"
-      | "dots"
-      | "colorDots"
+  setGenerator: (
+    value: "ascii" | "dots"
+  ) => void;
+
+  style:
+  "classic" | "color" | null;
+
+  setStyle: (
+    value: "classic" | "color"
   ) => void;
 
   hasStarted: boolean;
@@ -54,8 +56,10 @@ export default function ControlPanel({
   setAsciiWidth,
   asciiImage,
   generateAscii,
-  asciiMode,
-  setAsciiMode,
+  generator,
+  setGenerator,
+  style,
+  setStyle,
   hasStarted,
   setHasStarted,
 
@@ -76,74 +80,82 @@ export default function ControlPanel({
 
       <div className="mb-6 text-center">
         <p className="mb-3 text-sm">
-          Choose a Style
+          Choose Generator
         </p>
 
         <div className="flex justify-center gap-2">
           <button
-            onClick={() => {
-              setAsciiMode("grayscale");
-              setHasStarted(true);
-            }}
+            onClick={() =>
+              setGenerator("ascii")
+            }
             className={`
         rounded-xl px-4 py-2
-        ${asciiMode === "grayscale"
-                ? "bg-white text-black"
-                : "border border-white/20"}
-      `}
-          >
-            Classic
-          </button>
-
-          <button
-            onClick={() => {
-              setAsciiMode("color");
-              setHasStarted(true);
-            }}
-            className={`
-        rounded-xl px-4 py-2
-        ${asciiMode === "color"
-                ? "bg-white text-black"
-                : "border border-white/20"}
-      `}
-          >
-            Color
-          </button>
-
-          <button
-            onClick={() => {
-              setAsciiMode("dots");
-              setHasStarted(true);
-            }}
-            className={`
-    rounded-xl px-4 py-2
-    ${asciiMode === "dots"
+        ${generator === "ascii"
                 ? "bg-white text-black"
                 : "border border-white/20"
               }
-  `}
+      `}
+          >
+            ASCII
+          </button>
+
+          <button
+            onClick={() =>
+              setGenerator("dots")
+            }
+            className={`
+        rounded-xl px-4 py-2
+        ${generator === "dots"
+                ? "bg-white text-black"
+                : "border border-white/20"
+              }
+      `}
           >
             Dots
           </button>
-
-          <button
-            onClick={() => {
-              setAsciiMode("colorDots");
-              setHasStarted(true);
-            }}
-            className={`
-    rounded-xl px-4 py-2
-    ${asciiMode === "colorDots"
-                ? "bg-white text-black"
-                : "border border-white/20"
-              }
-  `}
-          >
-            Color Dots
-          </button>
-
-
         </div>
+
+        {generator && (
+          <>
+            <p className="mb-3 mt-6 text-sm">
+              Choose Style
+            </p>
+
+            <div className="flex justify-center gap-2">
+              <button
+                onClick={() => {
+                  setStyle("classic");
+                  setHasStarted(true);
+                }}
+                className={`
+            rounded-xl px-4 py-2
+            ${style === "classic"
+                    ? "bg-white text-black"
+                    : "border border-white/20"
+                  }
+          `}
+              >
+                Classic
+              </button>
+
+              <button
+                onClick={() => {
+                  setStyle("color");
+                  setHasStarted(true);
+                }}
+                className={`
+            rounded-xl px-4 py-2
+            ${style === "color"
+                    ? "bg-white text-black"
+                    : "border border-white/20"
+                  }
+          `}
+              >
+                Color
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
 
