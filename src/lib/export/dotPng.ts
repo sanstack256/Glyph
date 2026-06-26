@@ -3,7 +3,7 @@ import type { AsciiPixel } from "@/types";
 export function dotToPng(
     ascii: AsciiPixel[][]
 ) {
-    const fontSize = 14;
+    const cellSize = 14;
 
     const canvas =
         document.createElement("canvas");
@@ -13,6 +13,8 @@ export function dotToPng(
 
     if (!ctx) return null;
 
+    ctx.imageSmoothingEnabled = true;
+
     const width =
         ascii[0]?.length || 0;
 
@@ -20,10 +22,10 @@ export function dotToPng(
         ascii.length;
 
     canvas.width =
-        width * fontSize;
+        width * cellSize;
 
     canvas.height =
-        height * fontSize;
+        height * cellSize;
 
     ctx.fillStyle = "#000";
     ctx.fillRect(
@@ -34,7 +36,7 @@ export function dotToPng(
     );
 
     ctx.font =
-        `${fontSize}px monospace`;
+        `${cellSize}px monospace`;
 
     for (
         let y = 0;
@@ -63,8 +65,8 @@ export function dotToPng(
                 (pixel.brightness / 255) * 3;
 
             ctx.arc(
-                x * fontSize + fontSize / 2,
-                y * fontSize + fontSize / 2,
+                x * cellSize + cellSize / 2,
+                y * cellSize + cellSize / 2,
                 radius,
                 0,
                 Math.PI * 2
