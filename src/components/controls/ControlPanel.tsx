@@ -75,6 +75,15 @@ export default function ControlPanel({
     return () => clearTimeout(timer);
   }, [asciiWidth]);
 
+  const downloadFileName =
+    generator === "ascii"
+      ? style === "classic"
+        ? "glyph-ascii.png"
+        : "glyph-color-ascii.png"
+      : style === "classic"
+        ? "glyph-dots.png"
+        : "glyph-color-dots.png";
+
   return (
     <div>
 
@@ -190,7 +199,7 @@ export default function ControlPanel({
         <a
           href={asciiImage}
           onClick={trackDownload}
-          download="glyph-ascii.png"
+          download={downloadFileName}
           className="
   mt-3
   block
