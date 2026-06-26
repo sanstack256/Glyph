@@ -19,6 +19,8 @@ import { asciiToColorPng }
 import { dotToPng }
   from "@/lib/export/dotPng";
 
+import { colorDotToPng }
+  from "@/lib/export/colorDotPng";
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null);
@@ -33,7 +35,11 @@ export default function Home() {
 
   const [asciiMode, setAsciiMode] =
     useState<
-      "grayscale" | "color" | "dots" | null
+      "grayscale"
+      | "color"
+      | "dots"
+      | "colorDots"
+      | null
     >(null);
 
   const [hasStarted, setHasStarted] =
@@ -60,9 +66,14 @@ export default function Home() {
 
     if (asciiMode === "color") {
       png = asciiToColorPng(result);
-    } else if (asciiMode === "dots") {
+    }
+    else if (asciiMode === "dots") {
       png = dotToPng(result);
-    } else {
+    }
+    else if (asciiMode === "colorDots") {
+      png = colorDotToPng(result);
+    }
+    else {
       png = asciiToPng(result);
     }
 
