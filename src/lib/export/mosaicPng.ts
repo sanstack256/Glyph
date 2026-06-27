@@ -80,7 +80,19 @@ export function mosaicToPng(
 
                     count++;
                 }
+
             }
+                const r =
+                    totalR / count;
+
+                const g =
+                    totalG / count;
+
+                const b =
+                    totalB / count;
+
+            ctx.fillStyle =
+                `rgb(${r}, ${g}, ${b})`;
 
             ctx.fillRect(
                 x * tileSize,
