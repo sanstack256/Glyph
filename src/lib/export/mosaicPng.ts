@@ -4,6 +4,7 @@ export function mosaicToPng(
     ascii: AsciiPixel[][]
 ) {
     const tileSize = 14;
+    const blockSize = 4;
 
     const canvas =
         document.createElement("canvas");
@@ -41,22 +42,45 @@ export function mosaicToPng(
     for (
         let y = 0;
         y < height;
-        y++
+        y += blockSize
     ) {
         for (
             let x = 0;
             x < width;
-            x++
+            x += blockSize
         ) {
-            const pixel =
-                ascii[y][x];
+            let totalR = 0;
+            let totalG = 0;
+            let totalB = 0;
+            let count = 0;
 
-            ctx.fillStyle =
-                `rgb(
-          ${pixel.brightness},
-          ${pixel.brightness},
-          ${pixel.brightness}
-        )`;
+            for (
+                let by = 0;
+                by < blockSize;
+                by++
+            ) {
+                for (
+                    let bx = 0;
+                    bx < blockSize;
+                    bx++
+                ) {
+                    if (
+                        y + by >= height ||
+                        x + bx >= width
+                    ) {
+                        continue;
+                    }
+
+                    const pixel =
+                        ascii[y + by][x + bx];
+
+                    totalR += pixel.r;
+                    totalG += pixel.g;
+                    totalB += pixel.b;
+
+                    count++;
+                }
+            }
 
             ctx.fillRect(
                 x * tileSize,
