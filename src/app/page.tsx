@@ -22,6 +22,9 @@ import { dotToPng }
 import { colorDotToPng }
   from "@/lib/export/colorDotPng";
 
+import { mosaicToPng }
+  from "@/lib/export/mosaicPng";
+
 export default function Home() {
   const [image, setImage] = useState<File | null>(null);
   const [ascii, setAscii] =
@@ -35,7 +38,7 @@ export default function Home() {
 
   const [generator, setGenerator] =
     useState<
-      "ascii" | "dots" | null
+      "ascii" | "dots" | "mosaic" | null
     >(null);
 
   const [style, setStyle] =
@@ -89,6 +92,13 @@ export default function Home() {
     ) {
       png = colorDotToPng(result);
     }
+
+    else if (
+      generator === "mosaic"
+    ) {
+      png = mosaicToPng(result);
+    }
+
     else {
       return;
     }

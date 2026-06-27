@@ -26,10 +26,10 @@ interface Props {
   ) => void;
 
   generator:
-  "ascii" | "dots" | null;
+  "ascii" | "dots" | "mosaic" | null;
 
   setGenerator: (
-    value: "ascii" | "dots"
+    value: "ascii" | "dots" | "mosaic"
   ) => void;
 
   style:
@@ -80,9 +80,11 @@ export default function ControlPanel({
       ? style === "classic"
         ? "glyph-ascii.png"
         : "glyph-color-ascii.png"
-      : style === "classic"
-        ? "glyph-dots.png"
-        : "glyph-color-dots.png";
+      : generator === "dots"
+        ? style === "classic"
+          ? "glyph-dots.png"
+          : "glyph-color-dots.png"
+        : "glyph-mosaic.png";
 
   return (
     <div>
@@ -121,6 +123,22 @@ export default function ControlPanel({
       `}
           >
             Dots
+          </button>
+
+          
+          <button
+            onClick={() =>
+              setGenerator("mosaic")
+            }
+            className={`
+    rounded-xl px-4 py-2
+    ${generator === "mosaic"
+                ? "bg-white text-black"
+                : "border border-white/20"
+              }
+  `}
+          >
+            Mosaic
           </button>
         </div>
 
