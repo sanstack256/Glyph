@@ -4,7 +4,8 @@ export function mosaicToPng(
     ascii: AsciiPixel[][]
 ) {
     const tileSize = 40;
-    const blockSize = 8;
+    const minBlockSize = 4;
+    const maxBlockSize = 8;
     const grout = 2;
 
     const canvas =
@@ -24,10 +25,10 @@ export function mosaicToPng(
         ascii.length;
 
     canvas.width =
-        (width / blockSize) * tileSize;
+        width * tileSize;
 
     canvas.height =
-        (height / blockSize) * tileSize;
+        height * tileSize;
 
     ctx.fillStyle = "#000";
     ctx.fillRect(
@@ -37,30 +38,64 @@ export function mosaicToPng(
         canvas.height
     );
 
+    const occupied =
+        Array.from(
+            { length: height },
+            () =>
+                Array(width).fill(false)
+        );
+
     for (
         let y = 0;
         y < height;
-        y += blockSize
+        y++
     ) {
         for (
             let x = 0;
             x < width;
-            x += blockSize
+            x++
         ) {
+
+            if (occupied[y][x])
+                continue;
 
             let totalR = 0;
             let totalG = 0;
             let totalB = 0;
             let count = 0;
 
+            const blockWidth =
+                Math.floor(
+                    Math.random() *
+                    (maxBlockSize - minBlockSize + 1)
+                ) + minBlockSize;
+
+            const blockHeight =
+                Math.floor(
+                    Math.random() *
+                    (maxBlockSize - minBlockSize + 1)
+                ) + minBlockSize;
+
+            const actualWidth =
+                Math.min(
+                    blockWidth,
+                    width - x
+                );
+
+            const actualHeight =
+                Math.min(
+                    blockHeight,
+                    height - y
+                );
+
             for (
                 let by = 0;
-                by < blockSize;
+                by < actualHeight;
                 by++
             ) {
                 for (
                     let bx = 0;
-                    bx < blockSize;
+                    bx < actualWidth;
                     bx++
                 ) {
                     if (
@@ -107,12 +142,10 @@ export function mosaicToPng(
 
 
             const drawX =
-                (x / blockSize) *
-                tileSize;
+                x * tileSize;
 
             const drawY =
-                (y / blockSize) *
-                tileSize;
+                y * tileSize;
 
             const offsetX =
                 (tileSize - tileWidth) / 2;
