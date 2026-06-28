@@ -3,8 +3,9 @@ import type { AsciiPixel } from "@/types";
 export function mosaicToPng(
     ascii: AsciiPixel[][]
 ) {
-    const tileSize = 14;
-    const blockSize = 4;
+    const tileSize = 40;
+    const blockSize = 8;
+    const grout = 2;
 
     const canvas =
         document.createElement("canvas");
@@ -92,13 +93,29 @@ export function mosaicToPng(
             ctx.fillStyle =
                 `rgb(${r}, ${g}, ${b})`;
 
-            ctx.fillRect(
+            const drawX =
                 (x / blockSize) *
-                    tileSize,
+                tileSize;
+
+            const drawY =
                 (y / blockSize) *
-                    tileSize,
-                tileSize,
-                tileSize
+                tileSize;
+
+            ctx.fillRect(
+                drawX + grout / 2,
+                drawY + grout / 2,
+                tileSize - grout,
+                tileSize - grout
+            );
+
+            ctx.strokeStyle = "#202020";
+            ctx.lineWidth = 2;
+
+            ctx.strokeRect(
+                drawX + grout / 2,
+                drawY + grout / 2,
+                tileSize - grout,
+                tileSize - grout
             );
         }
     }
