@@ -93,6 +93,19 @@ export function mosaicToPng(
             ctx.fillStyle =
                 `rgb(${r}, ${g}, ${b})`;
 
+            const tileWidth =
+                tileSize * (
+                    0.75 +
+                    Math.random() * 0.5
+                );
+
+            const tileHeight =
+                tileSize * (
+                    0.75 +
+                    Math.random() * 0.5
+                );
+
+
             const drawX =
                 (x / blockSize) *
                 tileSize;
@@ -101,21 +114,27 @@ export function mosaicToPng(
                 (y / blockSize) *
                 tileSize;
 
+            const offsetX =
+                (tileSize - tileWidth) / 2;
+
+            const offsetY =
+                (tileSize - tileHeight) / 2;
+
             ctx.fillRect(
-                drawX + grout / 2,
-                drawY + grout / 2,
-                tileSize - grout,
-                tileSize - grout
+                drawX + offsetX,
+                drawY + offsetY,
+                tileWidth,
+                tileHeight
             );
 
             ctx.strokeStyle = "#202020";
             ctx.lineWidth = 2;
 
             ctx.strokeRect(
-                drawX + grout / 2,
-                drawY + grout / 2,
-                tileSize - grout,
-                tileSize - grout
+                drawX + offsetX,
+                drawY + offsetY,
+                tileWidth,
+                tileHeight
             );
         }
     }
