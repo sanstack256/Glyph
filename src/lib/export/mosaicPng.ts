@@ -4,9 +4,13 @@ export function mosaicToPng(
     ascii: AsciiPixel[][]
 ) {
     const tileSize = 40;
-    const minBlockSize = 4;
-    const maxBlockSize = 8;
     const grout = 2;
+
+    const minBlockWidth = 4;
+    const maxBlockWidth = 8;
+
+    const minBlockHeight = 4;
+    const maxBlockHeight = 8;
 
     const canvas =
         document.createElement("canvas");
@@ -56,46 +60,94 @@ export function mosaicToPng(
             x++
         ) {
 
-            if (occupied[y][x])
+            if (occupied[y][x]) {
                 continue;
+            }
 
             let totalR = 0;
             let totalG = 0;
             let totalB = 0;
             let count = 0;
 
-            const blockWidth =
+            let blockWidth =
                 Math.floor(
                     Math.random() *
-                    (maxBlockSize - minBlockSize + 1)
-                ) + minBlockSize;
+                    (maxBlockWidth - minBlockWidth + 1)
+                ) + minBlockWidth;
 
-            const blockHeight =
+            let blockHeight =
                 Math.floor(
                     Math.random() *
-                    (maxBlockSize - minBlockSize + 1)
-                ) + minBlockSize;
-
-            const actualWidth =
+                    (maxBlockHeight - minBlockHeight + 1)
+                ) + minBlockHeight;
+            blockWidth =
                 Math.min(
                     blockWidth,
                     width - x
                 );
 
-            const actualHeight =
+            blockHeight =
                 Math.min(
                     blockHeight,
                     height - y
                 );
 
+            let fits = false;
+
+            while (
+                !fits &&
+                blockWidth > 0 &&
+                blockHeight > 0
+            ) {
+                fits = true;
+
+                for (
+                    let by = 0;
+                    by < blockHeight;
+                    by++
+                ) {
+                    for (
+                        let bx = 0;
+                        bx < blockWidth;
+                        bx++
+                    ) {
+                        if (
+                            occupied[y + by][x + bx]
+                        ) {
+                            fits = false;
+                            break;
+                        }
+                    }
+
+                    if (!fits) break;
+                }
+
+                if (!fits) {
+                    if (
+                        blockWidth >= blockHeight
+                    ) {
+                        blockWidth--;
+                    } else {
+                        blockHeight--;
+                    }
+                }
+            }
+
+            if (
+                blockWidth === 0 ||
+                blockHeight === 0
+            ) {
+                continue;
+            }
+
             for (
                 let by = 0;
-                by < actualHeight;
+                by < blockHeight;
                 by++
             ) {
                 for (
                     let bx = 0;
-                    bx < actualWidth;
+                    bx < blockWidth;
                     bx++
                 ) {
                     if (
@@ -128,47 +180,44 @@ export function mosaicToPng(
             ctx.fillStyle =
                 `rgb(${r}, ${g}, ${b})`;
 
-            const tileWidth =
-                tileSize * (
-                    0.75 +
-                    Math.random() * 0.5
-                );
-
-            const tileHeight =
-                tileSize * (
-                    0.75 +
-                    Math.random() * 0.5
-                );
-
-
             const drawX =
                 x * tileSize;
 
             const drawY =
                 y * tileSize;
 
-            const offsetX =
-                (tileSize - tileWidth) / 2;
-
-            const offsetY =
-                (tileSize - tileHeight) / 2;
 
             ctx.fillRect(
-                drawX + offsetX,
-                drawY + offsetY,
-                tileWidth,
-                tileHeight
+                drawX + grout / 2,
+                drawY + grout / 2,
+                blockWidth * tileSize - grout,
+                blockHeight * tileSize - grout
             );
 
             ctx.strokeStyle = "#202020";
             ctx.lineWidth = 2;
 
             ctx.strokeRect(
-                drawX + offsetX,
-                drawY + offsetY,
-                tileWidth,
-                tileHeight
+                drawX + grout / 2,
+                drawY + grout / 2,
+                blockWidth * tileSize - grout,
+                blockHeight * tileSize - grout
             );
+            for (
+                let by = 0;
+                by < blockHeight;
+                by++
+            ) {
+                for (
+                    let bx = 0;
+                    bx < blockWidth;
+                    bx++
+                ) {
+                    occupied[y + by][x + bx] = true;
+                }
+            }
+
+
         }
     }
 
